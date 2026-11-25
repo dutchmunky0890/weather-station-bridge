@@ -1,0 +1,40 @@
+name: "Weather Station Bridge"
+version: "0.1.0"
+slug: weather_station_bridge
+description: "Receives a Sainlogic/Wunderground-protocol station upload on the LAN, publishes it to MQTT with HA discovery, and forwards a copy to Weather Underground."
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+ports:
+  80/tcp: 80
+ports_description:
+  80/tcp: "Station upload endpoint (point a DNS rewrite for rtupdate.wunderground.com here)"
+options:
+  station_id: ""
+  device_name: "Local Weather Station"
+  allowed_source_ip: ""
+  mqtt_host: "core-mosquitto"
+  mqtt_port: 1883
+  mqtt_username: ""
+  mqtt_password: ""
+  topic_prefix: "weather_station_bridge"
+  forward_to_wunderground: true
+  wunderground_host: "rtupdate.wunderground.com"
+  upstream_dns: "1.1.1.1"
+  log_level: "info"
+schema:
+  station_id: str
+  device_name: str
+  allowed_source_ip: str?
+  mqtt_host: str
+  mqtt_port: port
+  mqtt_username: str
+  mqtt_password: password
+  topic_prefix: str
+  forward_to_wunderground: bool
+  wunderground_host: str
+  upstream_dns: str?
+  log_level: list(debug|info|warning|error)
