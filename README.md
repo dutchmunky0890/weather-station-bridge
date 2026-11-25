@@ -92,3 +92,7 @@ Wind direction also gets text sensors that show a 16-point compass abbreviation 
 - If Weather Underground changes its endpoint host, update `wunderground_host`.
 - Tested on Home Assistant 2026.8 (where add-ons are called Apps) with a Sainlogic WS0835 Plus: updates arrive every minute, sensors appear under the device, and Weather Underground still receives the forwarded copy.
 - The station's `winddir_avg2m` has read 0° while the instant wind direction read 315°, so treat the 2-minute average direction as unreliable; the bridge passes on whatever the station sends.
+
+## Credits
+
+Written with help from Claude (Anthropic's AI assistant); designed, tested and run by me on my own setup.
